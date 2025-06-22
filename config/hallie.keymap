@@ -33,55 +33,21 @@
 
 / {
     behaviors {
-        mmvr: mmvr {
-            compatible = "zmk,behavior-input-two-axis";
-            label = "MMVR";
-            #binding-cells = <1>;
-            x-input-code = <10>;
-            y-input-code = <0>;
-            time-to-max-speed-ms = <100>;
-        };
+        move_u_d: behavior_sensor_rotate_mouse_move_up_down {
+    		compatible = "zmk,behavior-sensor-rotate";
+    		#sensor-binding-cells = <0>;
+    		tap-ms = <20>;
+    		bindings = <&mmv MOVE_UP>, <&mmv MOVE_DOWN>;
+    		display-name = "Mouse wheel (UD)";
+    	};
 
-        mmvl: mmvl {
-            compatible = "zmk,behavior-input-two-axis";
-            label = "MMVL";
-            #binding-cells = <1>;
-            x-input-code = <(-10)>;
-            y-input-code = <0>;
-            time-to-max-speed-ms = <100>;
-        };
-
-        mmvt: mmvt {
-            compatible = "zmk,behavior-input-two-axis";
-            label = "MMVT";
-            #binding-cells = <1>;
-            x-input-code = <0>;
-            y-input-code = <(-10)>;
-            time-to-max-speed-ms = <100>;
-        };
-
-        mmvd: mmvd {
-            compatible = "zmk,behavior-input-two-axis";
-            label = "MMVD";
-            #binding-cells = <1>;
-            x-input-code = <0>;
-            y-input-code = <10>;
-            time-to-max-speed-ms = <100>;
-        };
-
-        mmvry: mmvry {
-            compatible = "zmk,behavior-sensor-rotate";
-            label = "MMVRY";
-            #sensor-binding-cells = <0>;
-            bindings = <&mmvt MOVE_UP>, <&mmvd MOVE_DOWN>;
-        };
-
-        mmvrx: mmvrx {
-            compatible = "zmk,behavior-sensor-rotate";
-            label = "MMVRX";
-            #sensor-binding-cells = <0>;
-            bindings = <&mmvl MOVE_LEFT>, <&mmvr MOVE_RIGHT>;
-        };
+    	move_l_r: behavior_sensor_rotate_mouse_move_left_right {
+    		compatible = "zmk,behavior-sensor-rotate";
+    		#sensor-binding-cells = <0>;
+    		tap-ms = <20>;
+    		bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_RIGHT>;
+    		display-name = "Mouse wheel (LR)";
+    	};
     };
 
     keymap {
@@ -90,12 +56,12 @@
         default_layer {
             bindings = <
 &kp TAB     &kp Q  &kp W  &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I      &kp O    &kp P      &kp LEFT_BRACE
-&kp ESCAPE  &kp A  &kp S  &kp D    &kp F    &kp G        &kp H    &kp J    &kp K      &kp L    &kp SEMI   &kp SQT
-&kp CAPS    &kp Z  &kp X  &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACE
+&kp CAPS    &kp A  &kp S  &kp D    &kp F    &kp G        &kp H    &kp J    &kp K      &kp L    &kp SEMI   &kp SQT
+&kp ESCAPE  &kp Z  &kp X  &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACE
                           &mo ADJ  &mo LWR  &kp SPACE    &kp RET  &mo LWR  &mo RSE
             >;
 
-            sensor-bindings = <&mmvrx>, <&mmvry>;
+            sensor-bindings = <&move_l_r &move_u_d>;
         };
 
         lower_layer {
