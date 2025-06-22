@@ -68,6 +68,20 @@
             y-input-code = <10>;
             time-to-max-speed-ms = <100>;
         };
+
+        mmvry: mmvry {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "MMVRY";
+            #sensor-binding-cells = <0>;
+            bindings = <&mmvt MOVE_UP>, <&mmvd MOVE_DOWN>;
+        };
+
+        mmvrx: mmvrx {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "MMVRX";
+            #sensor-binding-cells = <0>;
+            bindings = <&mmvl MOVE_LEFT>, <&mmvr MOVE_RIGHT>;
+        };
     };
 
     keymap {
@@ -81,7 +95,7 @@
                           &mo ADJ  &mo LWR  &kp SPACE    &kp RET  &mo LWR  &mo RSE
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &scroll_u_d>;
+            sensor-bindings = <&mmvrx>, <&mmvry>;
         };
 
         lower_layer {
