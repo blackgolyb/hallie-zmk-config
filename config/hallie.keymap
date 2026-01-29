@@ -16,11 +16,13 @@
 #define ZMK_BEHAVIORS_KEEP_TOG
 #define ZMK_BEHAVIORS_KEEP_TRANS
 
-#include <dt-bindings/zmk/indicators.h>
 #include <behaviors.dtsi>
+#include <behaviors/indicators.dtsi>
+
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/indicators.h>
 
 #define DEF 0
 #define LWR 1

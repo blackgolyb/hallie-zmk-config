@@ -8,9 +8,12 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: v0.3-branch
       import: app/west.yml
-    - name: zmk-firmware--new
+    - name: zmk-feature-splittedspace
+      remote: splittedspace
+      revision: main
+    - name: zmk-keyboards-splittedspace
       remote: splittedspace
       revision: main
 
