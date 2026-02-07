@@ -51,12 +51,13 @@
         hrm_l: hrm_l {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred"; 
+            flavor = "balanced";
             tapping-term-ms = <200>;      // Час, після якого літера стає модом (підлаштуй під себе)
             quick-tap-ms = <200>;         // Дозволяє швидкі повтори літери (напр. "aaa")
             require-prior-idle-ms = <125>; // Захист від випадкових модів при швидкому наборі
             bindings = <&kp>, <&kp>;
-            
+            hold-trigger-on-release;
+
             // Включаємо протилежну сторону ТА HRM позиції цієї ж сторони для акордів
             hold-trigger-key-positions = <
                 6 7 8 9 10 11                   // Права сторона (верх)
@@ -70,12 +71,13 @@
         hrm_r: hrm_r {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             tapping-term-ms = <200>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
-            
+            hold-trigger-on-release;
+
             hold-trigger-key-positions = <
                 0 1 2 3 4 5                      // Ліва сторона (верх)
                 12 13 14 15 16 17                // Ліва сторона (середній)
