@@ -39,6 +39,14 @@
 &mt { quick_tap_ms = <200>; };
 
 / {
+    macros {
+        lang_swap: lang_swap {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kt LALT &kp LSHFT &kt LALT>;
+        };
+    };
+
     behaviors {
         hrm_l: hrm_l {
             compatible = "zmk,behavior-hold-tap";
@@ -85,6 +93,15 @@
             tapping-term-ms = <200>;
             flavor = "balanced";
         };
+
+        lang: layer_lang {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LANG_MOD_KEY";
+            bindings = <&mo>, <&lang_swap>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+        };
     };
 
     keymap {
@@ -92,10 +109,10 @@
 
         default {
             bindings = <
-&kp TAB     &kp Q         &kp W         &kp E          &kp R          &kp T              &kp Y          &kp U          &kp I          &kp O         &kp P            &kp LBKT
-&kp CAPS    &hrm_l LMETA A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHFT F &kp G              &kp H          &hrm_r RSHFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RMETA SEMI &kp SQT
-&kp ESC     &kp Z         &kp X         &kp C          &kp V          &kp B              &kp N          &kp M          &kp COMMA      &kp DOT       &kp SLASH        &kp RBKT
-                                        &mo MDA        &htmk MSE TAB  &htmk NAV SPACE    &htmk SYM RET  &htmk NUM BSPC &kp DEL
+&kp TAB     &kp Q          &kp W         &kp E          &kp R          &kp T              &kp Y          &kp U          &kp I          &kp O         &kp P            &kp LBKT
+&kp ESC     &hrm_l LMETA A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHFT F &kp G              &kp H          &hrm_r RSHFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RMETA SEMI &kp SQT
+&kp CAPS    &kp Z          &kp X         &kp C          &kp V          &kp B              &kp N          &kp M          &kp COMMA      &kp DOT       &kp SLASH        &kp RBKT
+                                         &lang MDA 0    &htmk MSE TAB  &htmk NAV SPACE    &htmk SYM RET  &htmk NUM BSPC &kp DEL
             >;
 
             sensor-bindings = <&scroll_l_r &scroll_u_d>;
