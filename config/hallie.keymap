@@ -24,7 +24,6 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define CONFIG_ZMK_IDLE_TIMEOUT 300000
-
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 500
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 250
 #define DEF 0
@@ -56,9 +55,11 @@
             quick-tap-ms = <200>;         // Дозволяє швидкі повтори літери (напр. "aaa")
             require-prior-idle-ms = <125>; // Захист від випадкових модів при швидкому наборі
             bindings = <&kp>, <&kp>;
+
             hold-trigger-on-release;
 
             // Включаємо протилежну сторону ТА HRM позиції цієї ж сторони для акордів
+
             hold-trigger-key-positions = <
                 6 7 8 9 10 11                   // Права сторона (верх)
                 18 19 20 21 22 23                // Права сторона (середній)
@@ -76,8 +77,8 @@
             quick-tap-ms = <200>;
             require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-on-release;
 
+            hold-trigger-on-release;
             hold-trigger-key-positions = <
                 0 1 2 3 4 5                      // Ліва сторона (верх)
                 12 13 14 15 16 17                // Ліва сторона (середній)
@@ -91,6 +92,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HT_MOD_KEY";
             bindings = <&mo>, <&kp>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "balanced";
@@ -100,6 +102,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LANG_MOD_KEY";
             bindings = <&mo>, <&lang_swap>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "balanced";
@@ -111,10 +114,10 @@
 
         default {
             bindings = <
-&kp TAB     &kp Q          &kp W         &kp E          &kp R          &kp T              &kp Y          &kp U          &kp I          &kp O         &kp P            &kp LBKT
-&kp ESC     &hrm_l LMETA A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHFT F &kp G              &kp H          &hrm_r RSHFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RMETA SEMI &kp SQT
-&kp CAPS    &kp Z          &kp X         &kp C          &kp V          &kp B              &kp N          &kp M          &kp COMMA      &kp DOT       &kp SLASH        &kp RBKT
-                                         &lang MDA 0    &htmk MSE TAB  &htmk NAV SPACE    &htmk SYM RET  &htmk NUM BSPC &kp DEL
+&kp TAB   &kp Q           &kp W          &kp E           &kp R           &kp T              &kp Y          &kp U           &kp I           &kp O          &kp P              &kp LBKT
+&kp ESC   &hrm_l LMETA A  &hrm_l LALT S  &hrm_l LCTRL D  &hrm_l LSHFT F  &kp G              &kp H          &hrm_r RSHFT J  &hrm_r RCTRL K  &hrm_r RALT L  &hrm_r RMETA SEMI  &kp SQT
+&kp CAPS  &kp Z           &kp X          &kp C           &kp V           &kp B              &kp N          &kp M           &kp COMMA       &kp DOT        &kp SLASH          &kp RBKT
+                                         &lang MDA 0     &htmk MSE TAB   &htmk NAV SPACE    &htmk SYM RET  &htmk NUM BSPC  &kp DEL
             >;
 
             sensor-bindings = <&scroll_l_r &scroll_u_d>;
@@ -168,8 +171,8 @@
             bindings = <
 &out OUT_BLE  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_CLR   &out OUT_USB    &trans            &trans                &trans                &trans      &trans  &trans
 &trans        &trans        &trans        &trans          &trans       &trans          &kp C_PREVIOUS    &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_NEXT  &trans  &trans
-&sys_reset    &bootloader   &trans        &studio_unlock  &ind IND_ON  &ind BAT_ST     &trans            &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans      &trans  &trans
-                                          &trans          &trans       &trans          &kp C_PLAY_PAUSE  &kp C_MUTE            &trans
+&sys_reset    &bootloader   &trans        &studio_unlock  &ind IND_ON  &ind BAT_ST     &kp PRINTSCREEN   &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans      &trans  &trans
+                                          &trans          &trans       &trans          &kp C_PLAY_PAUSE  &kp C_MUTE            &kp F20
             >;
 
             sensor-bindings = <&scroll_l_r &scroll_u_d>;
@@ -184,6 +187,15 @@
             >;
 
             sensor-bindings = <&scroll_l_r &scroll_u_d>;
+        };
+
+        layer_7 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
         };
     };
 };
